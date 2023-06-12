@@ -1,0 +1,20 @@
+{
+  "name": "petsansar-api",
+  "version": "1.0.0",
+  "description": "Api for pet sansar app. an android app that give each pet store an oppertunity to list and sell their products ",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index",
+    "start": "node index"
+  },
+  "keywords": [
+    "pet",
+    "sanasr",
+    "petland",
+    "nepal",
+    "pet",
+    "store"
+  ],
+  "author": "Ashish P.",
+  "license": "ISC"
+}
