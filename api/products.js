@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require("cloudinary");
 require("dotenv").config();
 
 
@@ -11,54 +11,54 @@ const upload = multer({ storage });
 
 // Configure Cloudinary
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
   });
 // Product Model
 const Product = require("../models/products");
 
 // POST /addProducts endpoint
 // POST /add endpoint
-router.post("/add", upload.array("image"), async (req, res) => {
-  try {
-    const { name, description, price, category, brand, quantity, keywords } = req.body;
+// router.post("/add", upload.array("image"), async (req, res) => {
+//   try {
+//     const { name, description, price, category, brand, quantity, keywords } = req.body;
 
-    // Check if all required fields are present
-    if (!name || !description || !price || !category || !brand || !req.files) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
+//     // Check if all required fields are present
+//     if (!name || !description || !price || !category || !brand || !req.files) {
+//       return res.status(400).json({ error: "Missing required fields" });
+//     }
 
-    // Upload images to Cloudinary
-    const imagePromises = req.files.map((file) =>
-      cloudinary.uploader.upload(file.buffer)
-    );
-    const uploadedImages = await Promise.all(imagePromises);
+//     // Upload images to Cloudinary
+//     const imagePromises = req.files.map((file) =>
+//       cloudinary.uploader.upload(file.buffer)
+//     );
+//     const uploadedImages = await Promise.all(imagePromises);
 
-    // Extract image URLs from the Cloudinary response
-    const imageUrls = uploadedImages.map((image) => image.secure_url);
+//     // Extract image URLs from the Cloudinary response
+//     const imageUrls = uploadedImages.map((image) => image.secure_url);
 
-    // Create a new product
-    const newProduct = new Product({
-      name,
-      description,
-      price,
-      category,
-      brand,
-      image: imageUrls,
-      quantity,
-      keywords,
-    });
+//     // Create a new product
+//     const newProduct = new Product({
+//       name,
+//       description,
+//       price,
+//       category,
+//       brand,
+//       image: imageUrls,
+//       quantity,
+//       keywords,
+//     });
 
-    // Save the product to the database
-    const savedProduct = await newProduct.save();
+//     // Save the product to the database
+//     const savedProduct = await newProduct.save();
 
-    res.status(201).json(savedProduct);
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({ error: "An error occurred while adding the product" });
-  }
-});
+//     res.status(201).json(savedProduct);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(400).json({ error: "An error occurred while adding the product" });
+//   }
+// });
 
 // router.post("/", upload.array("image"), async (req, res) => {
 //   try {
@@ -126,6 +126,68 @@ router.post("/add", upload.array("image"), async (req, res) => {
 //   }
 // });
 
+router.route("/add").post(upload.array("images"), async (req, res) => {
+
+  var images = req.files; // Use req.files to access the uploaded files
+  const { name, description, price, category, brand, quantity, keywords } = req.body;
+
+    // Check if all required fields are present
+    if (!name || !description || !price || !category || !brand || !req.files) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+  if (!images || images.length < 2) { // Check if at least 2 images are uploaded
+    return res.status(400).json({ msg: "Please upload two images" });
+  }
+
+  try {
+    const uploadPromises = images.map((image) => {
+      return new Promise((resolve, reject) => {
+        cloudinary.v2.uploader.upload_stream(
+          { resource_type: "image",folder: "petsansar" },
+          (error, result) => {
+            if (result) {
+              resolve(result.secure_url);
+            } else {
+              reject(error);
+            }
+          }
+        ).end(image.buffer);
+      });
+    });
+
+    Promise.all(uploadPromises)
+      .then((imageUrls) => {
+        const newProduct = new Product({
+          name,
+          description,
+          price,
+          brand,
+          category,
+          image: imageUrls,
+          quantity,
+          keywords,
+        });
+
+        newProduct
+          .save()
+          .then(() => {
+            res.status(201).json({ message: "Product added successfully" });
+          })
+          .catch((err) => {
+            res.status(500).json({
+              msg: "Error saving pet",err
+            });
+          });
+      })
+      .catch((error) => {
+        console.log(error)
+        res.status(500).json({ msg: "Error uploading images" });
+      });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
 
 // DELETE /products/:productID endpoint to delete a product
 router.delete("/:productID", async (req, res) => {

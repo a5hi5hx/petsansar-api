@@ -1,7 +1,6 @@
 // All Routes of the application
 const express = require("express")
 const router = express.Router();
-const jwt = require("../middlewares/jwt");
 // const requestModifier = require("../middlewares/requestModifier")
 // const { imagePaths } = require("../configs/constants")
 // const keyValueChecker = require('../middlewares/keyValueChecker')

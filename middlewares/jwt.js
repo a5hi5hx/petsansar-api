@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = "somesecretkey";
-const User = require("../models/user.model");
+const User = require("../models/user.profile");
 
 const JWT = {
   capturer: async function (req, res, next) {

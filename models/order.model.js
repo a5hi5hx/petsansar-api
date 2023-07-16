@@ -11,7 +11,7 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: User, required: true },
-  products: [{ type: Schema.Types.ObjectId, ref: Product, required: true }],
+  products: [{ type: Schema.Types.ObjectId, ref: Products, required: true }],
   address: { type: Schema.Types.ObjectId, ref: Address, required: true },
   totalPrice: { type: Number, required: true },
   deliveryFee: { type: Number, default: 0 },

@@ -177,7 +177,7 @@ return res.status(400).json({ message: 'Error try again', success: false });
         }
   
     const rs =  cloudinary.v2.uploader
-    .upload_stream({ resource_type: "image" }, (error, result) => {
+    .upload_stream({ resource_type: "image",folder: "users" }, (error, result) => {
       if (result) {
         User.findByIdAndUpdate({_id: uid}, { image: result.url })
         .then(updatedUser => {
@@ -313,7 +313,7 @@ router.get('/viewDetails/:id' ,async (req, res) => {
         address = await address.save();
     
         // Return the updated address
-        res.json(address);
+        res.json(address); 
       } catch (error) {
         console.error('Error editing address:', error);
         res.status(500).json({ error: 'Failed to edit address' });

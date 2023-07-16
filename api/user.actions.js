@@ -4,7 +4,7 @@ const Cart = require("../models/cart.model");
 const Product = require("../models/products");
 
 // POST /cart/addItem endpoint to add an item to the cart
-router.post("/addItem", async (req, res) => {
+router.post("cart/addItem", async (req, res) => {
   try {
     const { userId, productId, quantity } = req.body;
 
@@ -47,7 +47,7 @@ router.post("/addItem", async (req, res) => {
 
 
 // GET /cart/:userId/items endpoint to get all items in a user's cart
-router.get("/:userId/items", async (req, res) => {
+router.get("cart/:userId/items", async (req, res) => {
   try {
     const userId = req.params.userId;
 
@@ -65,7 +65,7 @@ router.get("/:userId/items", async (req, res) => {
   }
 });
 
-router.delete("/:userId/items/:itemId", async (req, res) => {
+router.delete("cart/:userId/items/:itemId", async (req, res) => {
     try {
       const userId = req.params.userId;
       const itemId = req.params.itemId;

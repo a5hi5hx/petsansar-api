@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+require("dotenv").config();
+
 mongoose.set("strictQuery", true);
 
 const connectDB = async () => {
     try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/petsansar', {
+    await mongoose.connect(process.env.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then((conn, err)=>{
@@ -21,11 +23,11 @@ const connectDB = async () => {
     }
 }
 app.use(express.json());
-
 app.use(require('./routes/main'));
 
+
 connectDB().then(()=> {
-    app.listen(5000, () => {
+    app.listen(process.env.PORT, () => {
         console.log("listening for requests");
       });
 });

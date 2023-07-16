@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = "somesecretkey";
-const User = require("../models/user.model");
 const otpsave = require('../models/otp.model');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
