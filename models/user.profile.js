@@ -1,12 +1,31 @@
+//done
 const mongoose = require("mongoose");
 const user = require('./user.model');
 const Schema = mongoose.Schema;
 
 const User = Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        ref: user
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true,
+    validate: {
+      validator: (value) => {
+        const re =
+          /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        return value.match(re);
+      },
+      message: "please enter valid email address",
     },
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
   name: {
     type: String,
   },
@@ -20,6 +39,9 @@ const User = Schema({
       },
       message: 'Invalid phone number format',
     },
+  },
+  address: {
+    type: String,
   },
   image: {
    type: String,

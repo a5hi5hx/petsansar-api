@@ -17,6 +17,8 @@ const orderSchema = new Schema({
   deliveryFee: { type: Number, default: 0 },
   paymentType: { type: String, enum: ["Cash on Delivery", "Online Payment"], required: true },
   status: { type: String, enum: ["Pending", "Processing", "Shipped", "Delivered"], default: "Pending" },
-});
+},
+{ timestamps: true }
+);
 
 module.exports = mongoose.model("Order", orderSchema);
