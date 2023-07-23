@@ -102,6 +102,18 @@ router.delete('/order/:orderId', async (req, res) => {
     }
   });
   
+  router.get("/viewOrder/:userId", async (req, res) => {
+    const { userId } = req.params;
+  
+    try {
+      // Find orders by the specified user ID
+      const orders = await Order.find({ user: userId }).populate("products").populate("address");
+  
+      res.json(orders);
+    } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
 
-
+  
 module.exports = router;

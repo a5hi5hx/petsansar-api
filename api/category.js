@@ -13,7 +13,7 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 // POST method to add a new category
-router.post("/addP", upload.single("image"), async (req, res) => {
+router.post("/addCategory", upload.single("image"), async (req, res) => {
   const { name, description } = req.body;
     // Check if name and description are provided
     if (!name || !description) {
