@@ -9,6 +9,7 @@ const productSchema = new Schema({
   brand: { type: String, required: true },
   image: [{ type: String, required: true }],
   quantity: { type: Number, default: 0 },
+  discount: {type: Number},
   keywords: [{type: String}],
 });
 

@@ -12,11 +12,14 @@ const Schema = mongoose.Schema;
 const orderSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: User, required: true },
   products: [{ type: Schema.Types.ObjectId, ref: Products, required: true }],
+  quantity: [{type: Number, required: true}],
   address: { type: Schema.Types.ObjectId, ref: Address, required: true },
   totalPrice: { type: Number, required: true },
   deliveryFee: { type: Number, default: 0 },
   paymentType: { type: String, enum: ["Cash on Delivery", "Online Payment"], required: true },
   status: { type: String, enum: ["Pending", "Processing", "Shipped", "Delivered"], default: "Pending" },
+  logistics: {    type: String,  },
+  trackingId: {type: String}
 },
 { timestamps: true }
 );

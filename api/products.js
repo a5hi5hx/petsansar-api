@@ -171,7 +171,7 @@ router.route("/add").post(upload.array("images"), async (req, res) => {
         newProduct
           .save()
           .then(() => {
-            res.status(201).json({ message: "Product added successfully" });
+            res.status(200).json({ message: "Product added successfully" });
           })
           .catch((err) => {
             res.status(500).json({

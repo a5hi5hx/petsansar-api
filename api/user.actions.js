@@ -90,7 +90,7 @@ router.delete("cart/:userId/items/:itemId", async (req, res) => {
       // Save the updated cart
       await cart.save();
   
-      res.json({ message: "Cart item deleted successfully", cart });
+      res.status(200).json({ message: "Cart item deleted successfully", cart });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "An error occurred while deleting the cart item" });
@@ -98,6 +98,4 @@ router.delete("cart/:userId/items/:itemId", async (req, res) => {
   });
   
 
-
-  
 module.exports = router;
