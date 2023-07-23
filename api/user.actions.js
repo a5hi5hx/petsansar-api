@@ -97,5 +97,19 @@ router.delete("cart/:userId/items/:itemId", async (req, res) => {
     }
   });
   
+  router.get("/search", async (req, res) => {
+    const { search } = req.query;
+    try {
+      const products = await Product.find({
+        $or: [
+          { name: { $regex: search, $options: "i" } }, // Case-insensitive name search
+          { keywords: { $in: search.split(",").map((keyword) => keyword.trim()) } }, // Keywords search
+        ],
+      });
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
 
 module.exports = router;

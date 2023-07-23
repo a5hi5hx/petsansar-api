@@ -190,7 +190,7 @@ router.route("/add").post(upload.array("images"), async (req, res) => {
 });
 
 // DELETE /products/:productID endpoint to delete a product
-router.delete("/:productID", async (req, res) => {
+router.delete("/delete/:productID", async (req, res) => {
   try {
     const productID = req.params.productID;
     // Find the product by ID and delete it
@@ -205,7 +205,7 @@ router.delete("/:productID", async (req, res) => {
   }
 });
 
-router.put("/:productID", async (req, res) => {
+router.put("/edit/:productID", async (req, res) => {
   try {
     const productID = req.params.productID;
     const updatedProductData = req.body;
@@ -240,11 +240,11 @@ router.get("/available", async (req, res) => {
   }
 });
 
-router.get("/:categoryID", async (req, res) => {
+router.get("/category/:categoryID", async (req, res) => {
   try {
     const categoryID = req.params.categoryID;
     // Find products by category ID
-    const products = await Product.find({ category: categoryID });
+    const products = await Product.find({ category: categoryID, quantity: {$gt: 0} });
     res.status(200).json(products);
   } catch (error) {
     console.error(error);

@@ -6,7 +6,7 @@ const OtpModel = new Schema({
         required: true,
     },
 otp: {
-type: String,
+type: Number,
 required: true,
 },
 expiryDate: {

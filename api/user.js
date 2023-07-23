@@ -269,7 +269,7 @@ router.get('/viewDetails/:id' ,async (req, res) => {
       }
     });
   
-    router.get('/:userId', async (req, res) => {
+    router.get('/address/:userId', async (req, res) => {
       try {
         const userId  = req.params;
     

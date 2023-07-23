@@ -75,7 +75,7 @@ router.post('/placeorders', async (req, res) => {
 });
 
 // DELETE /orders/:orderId - Delete a placed order
-router.delete('/:orderId', async (req, res) => {
+router.delete('/order/:orderId', async (req, res) => {
     try {
       const { orderId } = req.params;
   
