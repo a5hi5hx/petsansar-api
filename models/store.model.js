@@ -40,6 +40,8 @@ const Store = Schema({
    type: String,
    default:"https://res.cloudinary.com/djq37xptm/image/upload/v1677953696/i02sxwh0mn1biz6ivgiu.jpg",
   },
-});
+},
+{ timestamps: true },
+);
 
 module.exports = mongoose.model("StoreData", Store);

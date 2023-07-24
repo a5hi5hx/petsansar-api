@@ -22,7 +22,7 @@ router.all('/', (req, res)=> {
   res.status(404).json({message: "Use Proper Routes and Roles"});
   });
 
-router.route("/signup").post( async (req, res) => {
+router.post("/signup", async (req, res) => {
 const {username, email, password, phoneNumber} = req.body;
 try {
     if(await User.findOne({email: email}) || await User.findOne({username: username}))
