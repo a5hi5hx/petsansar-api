@@ -20,12 +20,13 @@ router.post("/addCategory", upload.single("image"), async (req, res) => {
       return res.status(400).json({ error: 'Name and description are required' });
     }
     // Check if image is uploaded
+    var image = req.file;
     if (!req.file) {
       return res.status(400).json({ error: 'Image is required' });
     }
   try {
     const pes = await cloudinary.v2.uploader
-      .upload_stream({ resource_type: "image" }, (err, pes) => {
+      .upload_stream({ resource_type: "image"  }, (err, pes) => {
         if (pes) {
           const newMainCategory = new MainCategory({
             name,
