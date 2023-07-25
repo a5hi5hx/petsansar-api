@@ -37,7 +37,7 @@ router.post("/addCategory", upload.single("image"), async (req, res) => {
             .save()
             .then((newP) => {
               const  { name, image, description, status, _id, __v } = newP;
-              res.status(200).json({ message: "Category added successfully", name, image, description, status, id: _id});
+              res.status(200).json({ name, image, description, status, id: _id});
             })
             .catch((err) => {
               res.status(400).json({
