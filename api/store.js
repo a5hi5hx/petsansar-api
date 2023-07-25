@@ -126,9 +126,8 @@ router.get("/tokenValid", async (req, res) => {
       if (!user) {
         return res.status(400).json({ msg: false, success: false });
       }
-      const { _id, username, email, password, phoneNumber, isVerified } = user._doc;
-      return res.json({ msg: true, success: true, _id, username, email, password, phoneNumber, isVerified });
-  
+      const { _id, name, email, password, phoneNumber, image } = user._doc;
+      return res.json({ msg: true, success: true, id: _id, email, password, phoneNumber, name, image });
     } catch (err) {
       return res.status(500).json({ error: err.message });
     }
