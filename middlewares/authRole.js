@@ -26,4 +26,24 @@ const checkRole = (requiredRoles) => {
   };
 };
 
+const auth = async (req, res, next) => {
+  try {
+    const token = req.header("x-auth-token");
+
+    if (!token) {
+      return res.status(401).json({ msg: "Access denied" });
+    }
+    const verified = jwt.verify(token, process.env.tokenSecret);
+    if (!verified) {
+      return res.status(401).json({ msg: "Token Verify failed. Auth denied" });
+    }
+    req.user = verified.id;
+    req.token = token;
+    next();
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
+
 module.exports = checkRole;
+module.exports = auth;
