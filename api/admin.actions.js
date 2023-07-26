@@ -20,7 +20,7 @@ cloudinary.config({
     api_secret: process.env.API_SECRET,
   });
 // API route to add data with picture upload
-router.post("/add", upload.single("picture"), async (req, res) => {
+router.post("/addScroll", upload.single("picture"), async (req, res) => {
   try {
     const { title } = req.body;
     const picture = req.file;
