@@ -7,7 +7,6 @@ const Address = require("../models/address.book");
 const ScrollView = require('../models/scroll.view');
 const multer = require("multer");
 const cloudinary = require("cloudinary"); // Replace with the actual path to your Cloudinary config file
-const ScrollView = require("./path/to/scrollViewModel"); // Replace with the actual path to your model file
 require("dotenv").config();
 
 const storage = multer.memoryStorage();
