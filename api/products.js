@@ -126,7 +126,7 @@ const Product = require("../models/products");
 //   }
 // });
 
-router.route("/add").post(upload.array("images"), async (req, res) => {
+router.route("/addProduct").post(upload.array("images"), async (req, res) => {
 
   var images = req.files; // Use req.files to access the uploaded files
   const { name, description, price, category, brand, quantity, keywords } = req.body;
@@ -190,7 +190,7 @@ router.route("/add").post(upload.array("images"), async (req, res) => {
 });
 
 // DELETE /products/:productID endpoint to delete a product
-router.delete("/delete/:productID", async (req, res) => {
+router.delete("/deleteP/:productID", async (req, res) => {
   try {
     const productID = req.params.productID;
     // Find the product by ID and delete it
@@ -205,7 +205,7 @@ router.delete("/delete/:productID", async (req, res) => {
   }
 });
 
-router.put("/edit/:productID", async (req, res) => {
+router.put("/editP/:productID", async (req, res) => {
   try {
     const productID = req.params.productID;
     const updatedProductData = req.body;
@@ -228,7 +228,7 @@ router.put("/edit/:productID", async (req, res) => {
   }
 });
 
-router.get("/available", async (req, res) => {
+router.get("/availableP", async (req, res) => {
   try {
     // Find products with quantity > 0
     const products = await Product.find({ quantity: { $gt: 0 } });
@@ -240,7 +240,7 @@ router.get("/available", async (req, res) => {
   }
 });
 
-router.get("/category/:categoryID", async (req, res) => {
+router.get("/categoryP/:categoryID", async (req, res) => {
   try {
     const categoryID = req.params.categoryID;
     // Find products by category ID
@@ -253,7 +253,7 @@ router.get("/category/:categoryID", async (req, res) => {
 });
 
 
-router.get("/detail/:productId", async (req, res) => {
+router.get("/detailP/:productId", async (req, res) => {
   try {
     const productId = req.params.productId;
 
