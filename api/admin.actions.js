@@ -33,11 +33,12 @@ router.post("/addScroll", upload.single("image"), async (req, res) => {
     const pes = await cloudinary.v2.uploader
     .upload_stream({ resource_type: "image",folder: "petsansar"});
     // Save data with Cloudinary URL to MongoDB
-    const scrollView = new ScrollView({ title, pictures: [pes.secure_url] });
+    const scrollView = new ScrollView({ title, pictures: pes.secure_url });
     await scrollView.save();
 
     res.status(201).json({ message: "Data added successfully", data: scrollView });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Failed to add data" });
   }
 });
