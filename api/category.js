@@ -116,12 +116,44 @@ router.post("/addCategory", upload.single("image"), async (req, res) => {
 
 router.get('/categories', async (req, res)=> {
 try {
-  const cate = await  MainCategory.find();
+  const cate = await  MainCategory.find({});
   return res.status(200).json({cate});
 } catch (error) {
   return res.status(400).json({message: 'No Categories Found'});
 }
 });
 
+
+router.get('/viewcategories', async (req, res)=> {
+  try {
+    const cate = await  MainCategory.find({status: 'active'});
+    return res.status(200).json({cate});
+  } catch (error) {
+    return res.status(400).json({message: 'No Categories Found'});
+  }
+  });
+
+  router.post('/categoryStatus/:id', async (req, res) => {
+    const categoryId = req.params.id;
+  
+    try {
+      // Find the main category by its ID
+      const mainCategory = await MainCategory.findById(categoryId);
+  
+      if (!mainCategory) {
+        return res.status(404).json({ message: 'Main category not found.' });
+      }
+  
+      // Toggle the status between 'active' and 'inactive'
+      mainCategory.status = mainCategory.status === 'active' ? 'inactive' : 'active';
+  
+      // Save the updated main category
+      await mainCategory.save();
+  
+      return res.json({ message: 'Main category status updated successfully.', mainCategory });
+    } catch (err) {
+      return res.status(500).json({ message: 'Error updating main category status.', error: err.message });
+    }
+  });
 
 module.exports = router;
