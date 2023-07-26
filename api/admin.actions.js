@@ -22,21 +22,43 @@ cloudinary.config({
 router.post("/addScroll", upload.single("image"), async (req, res) => {
   try {
     const { title } = req.body;
-    const picture = req.file;
+    const image = req.file;
 
-    if (!title || !picture) {
+    if (!title || !image) {
       return res.status(400).json({ error: "Please provide title and a picture" });
     }
 
     // Upload the picture to Cloudinary and get the URL
-  
-    const pes = await cloudinary.v2.uploader
-    .upload_stream({ resource_type: "image",folder: "petsansar"});
-    // Save data with Cloudinary URL to MongoDB
-    const scrollView = new ScrollView({ title, pictures: pes.secure_url });
-    await scrollView.save();
+    const pees = await cloudinary.v2.uploader
+    .upload_stream({ resource_type: "image",folder: "petsansar"  }, (err, pes) => {
+      if (pes) {
+        const newMainCategory = new ScrollView({
+          title,
+          pictures: pes.secure_url
+                });
+        newMainCategory
+          .save()
+          .then((newP) => {
+            res.status(200).json({mesage: 'Success'});
+          })
+          .catch((err) => {
+            res.status(400).json({
+              message: "Error Saving Item",
+            });
+          });
+      } else {
+        res.status(400).json({ message: "Error Uploading Image" });
+      }       
+    })
+    .end(image.buffer);
+    // const pes = await cloudinary.v2.uploader
+    // .upload_stream({ resource_type: "image",folder: "petsansar"});
+    // // Save data with Cloudinary URL to MongoDB
+    // console.log(pes.url);
+    // const scrollView = new ScrollView({ title, pictures: pes.secure_url });
+    // await scrollView.save();
 
-    res.status(201).json({ message: "Data added successfully", data: scrollView });
+    // res.status(201).json({ message: "Data added successfully", data: scrollView });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Failed to add data" });
