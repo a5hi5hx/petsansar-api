@@ -26,7 +26,7 @@ router.post("/addCategory", upload.single("image"), async (req, res) => {
     }
   try {
     const pes = await cloudinary.v2.uploader
-      .upload_stream({ resource_type: "image"  }, (err, pes) => {
+      .upload_stream({ resource_type: "image",folder: "petsansar"  }, (err, pes) => {
         if (pes) {
           const newMainCategory = new MainCategory({
             name,

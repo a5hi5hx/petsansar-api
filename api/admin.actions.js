@@ -19,7 +19,7 @@ cloudinary.config({
     api_secret: process.env.API_SECRET,
   });
 // API route to add data with picture upload
-router.post("/addScroll", upload.single("picture"), async (req, res) => {
+router.post("/addScroll", upload.single("image"), async (req, res) => {
   try {
     const { title } = req.body;
     const picture = req.file;
@@ -29,12 +29,11 @@ router.post("/addScroll", upload.single("picture"), async (req, res) => {
     }
 
     // Upload the picture to Cloudinary and get the URL
-    const result = await cloudinary.uploader.upload(picture.buffer, {
-      folder: "scrollView_pictures", // Set your desired folder name on Cloudinary
-    });
-
+  
+    const pes = await cloudinary.v2.uploader
+    .upload_stream({ resource_type: "image",folder: "petsansar"});
     // Save data with Cloudinary URL to MongoDB
-    const scrollView = new ScrollView({ title, pictures: [result.secure_url] });
+    const scrollView = new ScrollView({ title, pictures: [pes.secure_url] });
     await scrollView.save();
 
     res.status(201).json({ message: "Data added successfully", data: scrollView });
