@@ -29,5 +29,10 @@ async function seedProducts() {
 
 // Call the seedProducts function to populate the database
 //seedProducts();
-
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open",async  () => {
+  console.log("Connected to MongoDB database.");
+  await seedProducts();
+});
 module.exports = seedProducts;
