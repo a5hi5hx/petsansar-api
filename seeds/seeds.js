@@ -215,8 +215,8 @@ const petSeeds = [
         category: "64c234ebba294ef50cce9340", // Assuming this ObjectId represents the "Pet Gates and Fences" category.
         brand: "SafeZone",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777695/petsansar/ltqckqfnfblca30tjomm.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777696/petsansar/xkzy0gj1xagq0bfwjs4b.jpg" 
         ],
         quantity: 8,
         keywords: ["pet fence", "retractable fence", "pet safety", "outdoor pet area", "portable fence"],
@@ -228,8 +228,8 @@ const petSeeds = [
         category: "64c234ebba294ef50cce9340", // Assuming this ObjectId represents the "Pet Gates and Fences" category.
         brand: "WoodPaws",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777835/petsansar/61f6kMpUJaL_pcdlhh.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777835/petsansar/71AIJZYENdL._AC_UF894_1000_QL80__zkru77.jpg"
         ],
         quantity: 12,
         keywords: ["dog gate", "wooden gate", "pet door", "pet access", "indoor pet gate"],
@@ -241,8 +241,8 @@ const petSeeds = [
         category: "64c2380785ba7445c53209ae", // Assuming this ObjectId represents the "Pet Toys" category.
         brand: "PuzzlePaws",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777835/petsansar/61f6kMpUJaL_pcdlhh.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777835/petsansar/71AIJZYENdL._AC_UF894_1000_QL80__zkru77.jpg" 
         ],
         quantity: 20,
         keywords: ["interactive toy", "treat dispenser", "dog toy", "puzzle toy", "mental stimulation"],
@@ -254,8 +254,8 @@ const petSeeds = [
         category: "64c2380785ba7445c53209ae", // Assuming this ObjectId represents the "Pet Toys" category.
         brand: "FelineFrenzy",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777942/petsansar/61bf1yoHyKL_cywplm.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690777943/petsansar/71Nws7j4puL_ncxm6c.jpg"
         ],
         quantity: 15,
         keywords: ["feather toy", "teaser wand", "cat toy", "interactive play", "cat entertainment"],
@@ -267,8 +267,8 @@ const petSeeds = [
         category: "64c2380785ba7445c53209ae", // Assuming this ObjectId represents the "Pet Toys" category.
         brand: "RopeRover",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778031/petsansar/91eUSEVhVdL_suxs1n.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778030/petsansar/81tnlLdcNQL._AC_UF1000_1000_QL80__brrugh.jpg"
         ],
         quantity: 18,
         keywords: ["rope toy", "chew toy", "dog toy", "durable", "dog dental care"],
@@ -280,8 +280,8 @@ const petSeeds = [
         category: "64c2380785ba7445c53209ae", // Assuming this ObjectId represents the "Pet Toys" category.
         brand: "PlushPaws",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778297/petsansar/71GaQOujI1L._AC_UF1000_1000_QL80__dg9zrg.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778297/petsansar/71GaQOujI1L._AC_UF1000_1000_QL80__dg9zrg.jpg" 
         ],
         quantity: 12,
         keywords: ["plush toy", "squeaky toy", "dog toy", "soft toy", "dog entertainment"],
@@ -293,9 +293,9 @@ const petSeeds = [
         category: "64c2380785ba7445c53209ae", // Assuming this ObjectId represents the "Pet Toys" category.
         brand: "LaserPaws",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778401/petsansar/613fPwZDQcL_mnahzd.jpg",   
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778402/petsansar/61AzPLHJy3L_fxb8dn.jpg" 
+          ],
         quantity: 22,
         keywords: ["laser pointer", "interactive toy", "cat toy", "playful chasing", "cat entertainment"],
       },
@@ -304,10 +304,10 @@ const petSeeds = [
         description: "Nutritious and delicious grain-free chicken formula for dogs.",
         price: 1250,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "HealthyPaws",
+        brand: "Diamonds",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778474/petsansar/diamond-naturals-grain-free-cage-free-chicken-and-sweet-potato-formula-for-dogs-bag-front-111120_dsc2zq.png",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778474/petsansar/diamond-naturals-grain-free-cage-free-chicken-and-sweet-potato-formula-for-dogs-bag-front-111120_dsc2zq.png" 
         ],
         quantity: 30,
         keywords: ["dog food", "grain-free", "chicken formula", "nutritious", "healthy"],
@@ -319,9 +319,8 @@ const petSeeds = [
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
         brand: "WhiskerDelight",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-        ],
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778474/petsansar/diamond-naturals-grain-free-cage-free-chicken-and-sweet-potato-formula-for-dogs-bag-front-111120_dsc2zq.png",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778474/petsansar/diamond-naturals-grain-free-cage-free-chicken-and-sweet-potato-formula-for-dogs-bag-front-111120_dsc2zq.png"  ],
         quantity: 25,
         keywords: ["cat food", "salmon formula", "sweet potato", "tasty", "nutritious"],
       },
@@ -330,10 +329,10 @@ const petSeeds = [
         description: "Specially formulated food for small breed puppies.",
         price: 1450,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "PuppyTails",
+        brand: "Acana",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778603/petsansar/ACANA_20Dog_20Puppy_20Small_20Breed_20Recipe_20Front_20Right_20Canada_htpwni.png",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778603/petsansar/ACANA_20Dog_20Puppy_20Small_20Breed_20Recipe_20Front_20Right_20Canada_htpwni.png" 
         ],
         quantity: 20,
         keywords: ["puppy food", "small breed formula", "nutritious", "healthy", "puppy care"],
@@ -343,10 +342,10 @@ const petSeeds = [
         description: "Balanced and nutritious food for senior cats.",
         price: 1050,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "SeniorWhiskers",
+        brand: "Acana",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778694/petsansar/3708611-center-1_fvyetj.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778694/petsansar/3708611-center-1_fvyetj.jpg"
         ],
         quantity: 18,
         keywords: ["cat food", "senior formula", "balanced nutrition", "mature cat care"],
@@ -356,11 +355,10 @@ const petSeeds = [
         description: "High-quality cat food made with wild-caught fish.",
         price: 1150,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "FishyFeast",
+        brand: "Halo Holistic",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778741/petsansar/71GiwOY65ML._AC_UF1000_1000_QL80__klh0ex.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778741/petsansar/71GiwOY65ML._AC_UF1000_1000_QL80__klh0ex.jpg" ],
         quantity: 22,
         keywords: ["cat food", "fish formula", "wild-caught", "high-quality", "cat nutrition"],
       },
@@ -369,11 +367,10 @@ const petSeeds = [
         description: "Nutrient-rich food specially formulated for large breed dogs.",
         price: 1350,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "BigPaws",
+        brand: "Nutri Source",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-        ],
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778790/petsansar/81l5kiOd9bL_bn6blm.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778790/petsansar/81l5kiOd9bL_bn6blm.jpg" ],
         quantity: 28,
         keywords: ["dog food", "large breed formula", "nutrient-rich", "healthy", "big dogs"],
       },
@@ -382,23 +379,22 @@ const petSeeds = [
         description: "High-fiber rabbit pellets made from all-natural ingredients.",
         price: 450,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "HoppyBunny",
+        brand: "OxBow",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778853/petsansar/81Vj_EfM0LL._AC_UF1000_1000_QL80__eduws1.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778854/petsansar/95984_MAIN._AC_SL600_V1661823969__nwashx.jpg"   ],
         quantity: 35,
         keywords: ["rabbit food", "rabbit pellets", "all-natural", "high-fiber", "rabbit nutrition"],
       },
       {
-        name: "Grain-Free Turkey and Duck Cat Food",
+        name: "Grain-Free Turkey and Duck Pate Cat Food",
         description: "Wholesome grain-free cat food with turkey and duck.",
         price: 1050,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "TurkeyDuckDelight",
+        brand: "Go Solutions",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778943/petsansar/go-solutions-carnivore-grain-free-chicken-turkey--duck-pate-for-cats_gljn9s.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690778943/petsansar/go-solutions-carnivore-grain-free-chicken-turkey--duck-pate-for-cats_gljn9s.jpg" 
         ],
         quantity: 24,
         keywords: ["cat food", "grain-free", "turkey and duck formula", "wholesome", "cat nutrition"],
@@ -408,11 +404,10 @@ const petSeeds = [
         description: "Delicious treat mix for small animals like hamsters and guinea pigs.",
         price: 250,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "TinyTreats",
+        brand: "Wild Harvest",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779016/petsansar/P84151_20Natural_20Treat_20Mix_20Ham_20Ger_20Gui_20Rab_alipvu.jpg",
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779017/petsansar/9138f109-fc17-4108-9a65-49b2dc50571f_1.05a30124587ad3b68da609d0f5965037_kddqfg.jpg" ],
         quantity: 40,
         keywords: ["small animal treats", "hamster treats", "guinea pig treats", "delicious mix"],
       },
@@ -421,11 +416,11 @@ const petSeeds = [
         description: "Gentle formula for dogs with sensitive stomachs.",
         price: 1280,
         category: "64c2386685ba7445c53209b0", // Assuming this ObjectId represents the "Pet Food" category.
-        brand: "GentleDigest",
+        brand: "Science Diet",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-        ],
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779090/petsansar/1327755-center-1_vogqow.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779091/petsansar/2517943-center-1_dlp4jw.jpg"
+         ],
         quantity: 18,
         keywords: ["dog food", "sensitive stomach formula", "gentle on digestion", "dog nutrition"],
       },
@@ -434,11 +429,10 @@ const petSeeds = [
         description: "Comprehensive first aid kit for pets, including bandages, antiseptic wipes, and more.",
         price: 850,
         category: "64c23aa0756b67a1f4266b7b", // Assuming this ObjectId represents the "Pet First Aid Kits and Amenities" category.
-        brand: "SafePaws",
+        brand: "Rayco",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779210/petsansar/91zqgkGyUIL._AC_UF1000_1000_QL80__w4ou3w.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779210/petsansar/91zqgkGyUIL_lapq7o.jpg"  ],
         quantity: 15,
         keywords: ["pet first aid kit", "pet emergency", "bandages", "antiseptic wipes", "pet safety"],
       },
@@ -449,9 +443,9 @@ const petSeeds = [
         category: "64c23aa0756b67a1f4266b7b", // Assuming this ObjectId represents the "Pet First Aid Kits and Amenities" category.
         brand: "GroomPro",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-        ],
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779269/petsansar/H5686af8483044b95ab064832ff3a88c7e_bk1qx4.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779269/petsansar/611Twh1nqeL_ih8x5x.jpg"
+          ],
         quantity: 10,
         keywords: ["pet grooming scissors", "trimming pet fur", "pet grooming", "pet care"],
       },
@@ -462,9 +456,8 @@ const petSeeds = [
         category: "64c23aa0756b67a1f4266b7b", // Assuming this ObjectId represents the "Pet First Aid Kits and Amenities" category.
         brand: "CleanPaws",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
+         "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779314/petsansar/619uHI9dHLL_bylf65.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779315/petsansar/41X8sxLUGDL._AC_UF894_1000_QL80__q8mxm8.jpg"    ],
         quantity: 20,
         keywords: ["poop bag dispenser", "pet waste bags", "pet cleanup", "dog walking"],
       },
@@ -473,10 +466,10 @@ const petSeeds = [
         description: "Complete set for maintaining your pet's dental hygiene.",
         price: 350,
         category: "64c23aa0756b67a1f4266b7b", // Assuming this ObjectId represents the "Pet First Aid Kits and Amenities" category.
-        brand: "DentalCare",
+        brand: "Vet's Best",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779387/petsansar/51IYA62OIBL_iq1ze8.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779387/petsansar/51IYA62OIBL_iq1ze8.jpg"
         ],
         quantity: 12,
         keywords: ["pet toothbrush", "pet toothpaste", "dental care", "pet hygiene"],
@@ -488,8 +481,8 @@ const petSeeds = [
         category: "64c23aa0756b67a1f4266b7b", // Assuming this ObjectId represents the "Pet First Aid Kits and Amenities" category.
         brand: "HydraPets",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779604/petsansar/71pou1A0rDL._AC_UF1000_1000_QL80__squ9cm.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779604/petsansar/dog-travel-water-bottle-2000-2130196940dc4c32838ffd5867d01ef5_ucaoyd.jpg"
         ],
         quantity: 18,
         keywords: ["pet water bottle", "travel water dispenser", "pet hydration", "on-the-go"],
@@ -501,8 +494,8 @@ const petSeeds = [
         category: "64c23a4d756b67a1f4266b79", // Assuming this ObjectId represents the "Pet Bowls and Feeders" category.
         brand: "SteelPaws",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779684/petsansar/Bella-Dog-Bowls-Group_jrbbav.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779684/petsansar/Bella-Dog-Bowls-Group_jrbbav.jpg"
         ],
         quantity: 20,
         keywords: ["dog bowl", "stainless steel bowl", "durable", "food and water bowl", "pet feeding"],
@@ -512,10 +505,10 @@ const petSeeds = [
         description: "Elevated cat feeder to promote better posture during meals.",
         price: 480,
         category: "64c23a4d756b67a1f4266b79", // Assuming this ObjectId represents the "Pet Bowls and Feeders" category.
-        brand: "ElevateMeow",
+        brand: "MeowFeed",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779721/petsansar/Binkies-Pet-Supply-Elevated-Cat-Bowl-e1553808403385_oxfpw2.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779720/petsansar/71WgWuYerGL._AC_UF1000_1000_QL80__ctsfyw.jpg" 
         ],
         quantity: 15,
         keywords: ["cat feeder", "raised feeder", "elevated feeding", "cat food bowl", "posture support"],
@@ -527,8 +520,8 @@ const petSeeds = [
         category: "64c23a4d756b67a1f4266b79", // Assuming this ObjectId represents the "Pet Bowls and Feeders" category.
         brand: "SlowMunch",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779801/petsansar/71l_BqGUDpL._AC_UF1000_1000_QL80__i1ikes.jpg",
+        "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779801/petsansar/710TWYo2HPL_s391v6.jpg" 
         ],
         quantity: 12,
         keywords: ["dog bowl", "slow feeder", "anti-gulping bowl", "slow eating", "healthy digestion"],
@@ -540,39 +533,12 @@ const petSeeds = [
         category: "64c23a4d756b67a1f4266b79", // Assuming this ObjectId represents the "Pet Bowls and Feeders" category.
         brand: "AutoHydrate",
         image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779869/petsansar/61rfRNs7ijL_u4t3u3.jpg",
+          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690779869/petsansar/61rfRNs7ijL._AC_UF1000_1000_QL80__pwquyp.jpg"
         ],
         quantity: 10,
         keywords: ["automatic water dispenser", "pet water bowl", "continuous water supply", "hydration"],
       },
-      {
-        name: "Slow Feeder Dog Bowl",
-        description: "Special slow feeder bowl to prevent fast eating and promote digestion.",
-        price: 580,
-        category: "64c23a4d756b67a1f4266b79", // Assuming this ObjectId represents the "Pet Bowls and Feeders" category.
-        brand: "SlowMunch",
-        image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-        ],
-        quantity: 12,
-        keywords: ["dog bowl", "slow feeder", "anti-gulping bowl", "slow eating", "healthy digestion"],
-      },
-      {
-        name: "Automatic Water Dispenser",
-        description: "Continuous water supply with an automatic pet water dispenser.",
-        price: 890,
-        category: "64c23a4d756b67a1f4266b79", // Assuming this ObjectId represents the "Pet Bowls and Feeders" category.
-        brand: "AutoHydrate",
-        image: [
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/izkzwmeg1tsu5oehcqxc.jpg",
-          "https://res.cloudinary.com/ds1swdnv8/image/upload/v1690617095/petsansar/dibbpfwlprn62nb9dnjd.jpg",
-        ],
-        quantity: 10,
-        keywords: ["automatic water dispenser", "pet water bowl", "continuous water supply", "hydration"],
-      },
-      
     // Add more seed data for other pet beds if needed.
   ];
   

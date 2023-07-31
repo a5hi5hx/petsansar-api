@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const productSeederData = require('./seeds');
 const Product = require("../models/products"); // Make sure to provide the correct path to your product model file
 const petSeeds = require("./seeds");
 require("dotenv").config();

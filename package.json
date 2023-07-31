@@ -7,7 +7,6 @@
     "test": "nodemon index",
     "start": "node index",
     "dev": "nodemon index"
-    
   },
   "keywords": [
     "pet",
@@ -30,5 +29,8 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.2",
     "nodemon": "^1.19.4"
+  },
+  "scriptsComments": {
+    "seed": "nodemon seeds/seedData.js"
   }
 }
