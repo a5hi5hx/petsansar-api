@@ -12,6 +12,8 @@ const JWT = require('../middlewares/jwt');
 const EMAIL = require('../middlewares/sendEmail');
 const AddressBook = require('../models/address.book');
 const checkRole = require('../middlewares/authRole');
+const nodemailer = require('nodemailer');
+
 // Cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -322,17 +324,17 @@ router.get('/viewDetails/:id' ,async (req, res) => {
     });
 
 
-    router.post('/verifyEmail', async (req, res)=> {
+  router.post('/verifyEmails', async (req, res)=> {
+      const email = req.body.email;
       try {
-        const email = req.body;
-        generateOtp = function () {
+        generateOtp =async function () {
           const zeros = '0'.repeat(3);
           const x = parseFloat('1' + zeros);
           const y = parseFloat('9' + zeros);
           const confirmationCode = (Math.floor(x + Math.random() * y));
        return confirmationCode;
       }
-      const otp = generateOtp();
+      const otp = await generateOtp();
        
         const transporter = nodemailer.createTransport({
           service: 'Gmail',
@@ -364,9 +366,8 @@ router.get('/viewDetails/:id' ,async (req, res) => {
 
           }
         });
-
-
    } catch (error) {
+    console.log(error);
         return res.status(500).json({msg: "failed"});
       }
     } );
