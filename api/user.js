@@ -324,9 +324,15 @@ router.get('/viewDetails/:id' ,async (req, res) => {
 
     router.post('/verifyEmail', async (req, res)=> {
       try {
-        EMAIL.otpSend(req.body.email);
-        return res.status(201);
-      } catch (error) {
+if(EMAIL.otpSend(req.body.email)) 
+{
+  return res.status(201).json;
+
+}
+else{
+  return res.status(500);
+
+}     } catch (error) {
         return res.status(500);
       }
     } )
