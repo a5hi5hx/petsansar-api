@@ -42,7 +42,7 @@ const encpassword =  await bcrypt.hashSync(password, salt);
  await usr.save()
       .then(() => {
             const token = jwt.sign({ id: usr._id, role:usr.role }, process.env.tokenSecret);
-        EMAIL.otpSend(req.body.email);
+        //EMAIL.otpSend(req.body.email);
     delete usr._doc.password;
     const {name, email, phoneNumber, image, _id, isVerified,} = usr._doc;
             res.status(201).json({ message: "User created.", success: true ,name, email, phoneNumber,image,id: _id, isVerified, token: token});
@@ -324,7 +324,45 @@ router.get('/viewDetails/:id' ,async (req, res) => {
 
     router.post('/verifyEmail', async (req, res)=> {
       try {
-        const user = await EMAIL.otpSend(req.body.email);
+        const email = req.body;
+        generateOtp = function () {
+          const zeros = '0'.repeat(3);
+          const x = parseFloat('1' + zeros);
+          const y = parseFloat('9' + zeros);
+          const confirmationCode = (Math.floor(x + Math.random() * y));
+       return confirmationCode;
+      }
+      const otp = generateOtp();
+       
+        const transporter = nodemailer.createTransport({
+          service: 'Gmail',
+          auth: {
+            user: process.env.otp_email,
+            pass: process.env.otp_pass,
+          },
+        });
+        const mailOptions = {
+          from: process.env.otp_email,
+          to: email,
+          subject: 'OTP Verification',
+          html: `<h3>Your OTP is<h2> ${otp}</h2>. Valid for 10 minutes. Please use it to verify your account.</h3>`,
+        };
+        // Send the email
+       await transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log(error);
+          } else {
+            const expiryTimestamp = Date.now() + 10 * 60 * 1000;
+            const data = new otpsave({
+              email,
+              otp,
+              expiryDate: expiryTimestamp.toString(),
+            });
+             data.save();
+            console.log('Email sent: ' + info.response);
+    
+          }
+        });
 if( !user) 
 {
   return res.status(201).json({msg: "success"});

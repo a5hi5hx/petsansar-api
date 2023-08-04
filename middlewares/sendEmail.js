@@ -31,7 +31,7 @@ const EMAIL = {
       from: process.env.otp_email,
       to: email,
       subject: 'OTP Verification',
-      html: `<h3>Your OTP is<h2> ${otp}</h2>. Valid for 5 minutes. Please use it to verify your account.</h3>`,
+      html: `<h3>Your OTP is<h2> ${otp}</h2>. Valid for 10 minutes. Please use it to verify your account.</h3>`,
     };
     // Send the email
    await transporter.sendMail(mailOptions, (error, info) => {
@@ -40,7 +40,6 @@ const EMAIL = {
       } else {
          data.save();
         console.log('Email sent: ' + info.response);
-        return true;
 
       }
     });
