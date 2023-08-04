@@ -40,6 +40,8 @@ const EMAIL = {
       } else {
          data.save();
         console.log('Email sent: ' + info.response);
+        return true;
+
       }
     });
   },

@@ -146,7 +146,7 @@ router.post('/verifyUser', async (req, res) => {
     if (user.isVerified == false) {
     const otuser = await otpsave.find({email: email});
     if(otuser.otp == otp){
-      await otpsave.deleteOne({email: email});
+      await otpsave.deleteMany({email: email});
     }
   user.isVerified = true;
   await user.save();
@@ -324,17 +324,18 @@ router.get('/viewDetails/:id' ,async (req, res) => {
 
     router.post('/verifyEmail', async (req, res)=> {
       try {
-if(EMAIL.otpSend(req.body.email)) 
+        const user = await EMAIL.otpSend(req.body.email);
+if( !user) 
 {
-  return res.status(201);
+  return res.status(201).json({msg: "success"});
 
 }
 else{
-  return res.status(500);
+  return res.status(500).json({msg: "Failed"});
 
 }     } catch (error) {
-        return res.status(500);
+        return res.status(500).json({msg: "failed"});
       }
-    } )
+    } );
     
 module.exports = router;
