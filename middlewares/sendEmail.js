@@ -14,7 +14,7 @@ const EMAIL = {
    return confirmationCode;
   }
   const otp = generateOtp();
-    const expiryTimestamp = Date.now() + 5 * 60 * 1000;
+    const expiryTimestamp = Date.now() + 10 * 60 * 1000;
     const data = new otpsave({
       email,
       otp,

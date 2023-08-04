@@ -320,5 +320,15 @@ router.get('/viewDetails/:id' ,async (req, res) => {
         res.status(500).json({ error: 'Failed to edit address' });
       }
     });
+
+
+    router.post('/verifyEmail', async (req, res)=> {
+      try {
+        EMAIL.otpSend(req.body.email);
+        return res.status(201);
+      } catch (error) {
+        return res.status(500);
+      }
+    } )
     
 module.exports = router;
