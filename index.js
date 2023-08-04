@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 require("dotenv").config();
-const seedProducts = require('./seeds/seedData');
+// const seedProducts = require('./seeds/seedData');
 mongoose.set("strictQuery", true);
 
 const connectDB = async () => {

@@ -23,9 +23,9 @@ router.all('/', (req, res)=> {
   });
 
 router.post("/signup", async (req, res) => {
-const {username, email, password, phoneNumber} = req.body;
+const {name, email, password, phoneNumber} = req.body;
 try {
-    if(await User.findOne({email: email}) || await User.findOne({username: username}))
+    if(await User.findOne({email: email}) || await User.findOne({phoneNumber: phoneNumber}))
     {
         return res.status(400).json({message: "User already exists. Try resetting password.", success: false});
     }
@@ -34,7 +34,7 @@ const salt =  await bcrypt.genSaltSync(saltvalue);
 const encpassword =  await bcrypt.hashSync(password, salt);
     // Save user to MongoDB
     let usr = new User({
-      email, password: encpassword
+      email, password: encpassword, name, phoneNumber
   });
   if(await usr.validate()){
     return res.status(400).json({message: "Validation Error. Try validating all fields first.", success: false});
@@ -42,9 +42,10 @@ const encpassword =  await bcrypt.hashSync(password, salt);
  await usr.save()
       .then(() => {
             const token = jwt.sign({ id: usr._id, role:usr.role }, process.env.tokenSecret);
-        EMAIL.otpSend(email);
+        EMAIL.otpSend(req.body.email);
     delete usr._doc.password;
-            res.status(201).json({ message: "User created.", success: true ,usr, token: token});
+    const {name, email, phoneNumber, image, _id, isVerified,} = usr._doc;
+            res.status(201).json({ message: "User created.", success: true ,name, email, phoneNumber,image,id: _id, isVerified, token: token});
           })
       .catch((err) => {
         console.log(err);
