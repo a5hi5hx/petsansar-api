@@ -326,7 +326,7 @@ router.get('/viewDetails/:id' ,async (req, res) => {
       try {
 if(EMAIL.otpSend(req.body.email)) 
 {
-  return res.status(201).json;
+  return res.status(201);
 
 }
 else{
