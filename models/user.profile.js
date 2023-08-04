@@ -31,13 +31,6 @@ const User = Schema({
   phoneNumber: {
     type: String,
     required: true,
-    validate: {
-      validator: function (value) {
-        const phoneRegex = /^98\d{8}$/; 
-        return phoneRegex.test(value);
-      },
-      message: 'Invalid phone number format',
-    },
   },
   address: {
     type: String,
