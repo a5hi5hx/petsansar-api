@@ -360,18 +360,13 @@ router.get('/viewDetails/:id' ,async (req, res) => {
             });
              data.save();
             console.log('Email sent: ' + info.response);
-    
+            return res.status(201).json({msg: "success"});
+
           }
         });
-if( !user) 
-{
-  return res.status(201).json({msg: "success"});
 
-}
-else{
-  return res.status(500).json({msg: "Failed"});
 
-}     } catch (error) {
+   } catch (error) {
         return res.status(500).json({msg: "failed"});
       }
     } );
