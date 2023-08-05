@@ -20,6 +20,24 @@ cloudinary.config({
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
 });
+const auth = async (req, res, next) => {
+  try {
+    const token = req.header("x-auth-token");
+
+    if (!token) {
+      return res.status(401).json({ msg: "Access denied" });
+    }
+    const verified = jwt.verify(token, "somesecretkey");
+    if (!verified) {
+      return res.status(401).json({ msg: "Token Verify failed. Auth denied" });
+    }
+    req.user = verified.id;
+    req.token = token;
+    next();
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+};
 router.all('/', (req, res)=> {
   res.status(404).json({message: "Use Proper Routes and Roles"});
   });
@@ -133,13 +151,16 @@ router.get("/tokenValid", async (req, res) => {
         return res.status(400).json({ msg: false, success: false });
       }
       const { _id, username, email, password, phoneNumber, isVerified } = user._doc;
-      return res.json({ msg: true, success: true, _id, username, email, password, phoneNumber, isVerified });
+      return res.status(201).json({ msg: true, success: true, _id, username, email, password, phoneNumber, isVerified });
   
     } catch (err) {
       return res.status(500).json({ error: err.message });
     }
   });
-
+  router.route("/user").get(auth, async (req, res) => {
+    const user = await User.findById(req.user);
+    res.json({ ...user._doc, token: req.token });
+  });
 
 router.post('/verifyUser', async (req, res) => {
     const { email, otp } = req.body;
@@ -372,4 +393,6 @@ router.get('/viewDetails/:id' ,async (req, res) => {
       }
     } );
     
+
+   
 module.exports = router;
