@@ -126,8 +126,8 @@ try {
 
 router.get('/viewcategories', async (req, res)=> {
   try {
-    const cate = await  MainCategory.find({status: 'active'});
-    return res.status(200).json({cate});
+    //const cate = await  MainCategory.find({status: 'active'});
+    return res.status(200).json(await  MainCategory.find({status: 'active'}));
   } catch (error) {
     return res.status(400).json({message: 'No Categories Found'});
   }
