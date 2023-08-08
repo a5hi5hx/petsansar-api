@@ -66,7 +66,7 @@ const encpassword =  await bcrypt.hashSync(password, salt);
     delete usr._doc.password;
     const {name, email, phoneNumber, image, _id} = usr._doc;
   const  isVerifiedd=usr._doc.isVerified.toString();
-            res.status(201).json({ message: "User created.", success: true ,name, email, phoneNumber,image,id: _id, isVerified:isVerifiedd, token: token});
+            res.status(201).json({ message: "User created.", success: true ,name, email, phoneNumber,image,_id, isVerified:isVerifiedd, token: token});
           })
       .catch((err) => {
         console.log(err);
