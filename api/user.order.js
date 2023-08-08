@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Order = require('../models/order.model');
 const Product = require('../models/products');
+const Cart = require("../models/cart.model");
 
 // POST /orders - Place a new order
 router.post('/placeorders', async (req, res) => {
@@ -116,9 +117,42 @@ router.delete('/order/:orderId', async (req, res) => {
   });
 
 
-const Cart = require("../models/cart.model");
 
-router.post("/add-to-cart", async (req, res) => {
+// router.post("/cart/add-to-cart", async (req, res) => {
+//   try {
+//     const { userId, productId, quantity } = req.body;
+
+//     // Check if the user's cart exists
+//     let cart = await Cart.findOne({ _id: userId });
+
+//     if (!cart) {
+//       // If cart doesn't exist, create a new cart
+//       cart = new Cart({ _id: userId });
+//     }
+
+//     // Check if the item is already in the cart
+//     const existingItem = cart.items.find((item) => item.product.toString() === productId);
+//     if (existingItem) {
+//       // If the item already exists, update the quantity
+//       existingItem.quantity += quantity;
+//     } else {
+//       // If the item doesn't exist, add it to the cart
+//       cart.items.push({ product: productId, quantity });
+//     }
+
+//     // Calculate the total price
+//     cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+
+//     // Save the cart
+//     await cart.save();
+
+//     res.status(200).json(cart);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: "Failed to add item to cart" });
+//   }
+// });
+router.post("/cart/add-to-cart", async (req, res) => {
   try {
     const { userId, productId, quantity } = req.body;
 
@@ -141,13 +175,21 @@ router.post("/add-to-cart", async (req, res) => {
     }
 
     // Calculate the total price
-    cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    let totalPrice = 0;
+    for (const item of cart.items) {
+      const product = await Product.findById(item.product);
+      if (product) {
+        totalPrice += product.price * item.quantity;
+      }
+    }
+    cart.totalPrice = totalPrice;
 
     // Save the cart
     await cart.save();
 
     res.status(200).json(cart);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Failed to add item to cart" });
   }
 });
@@ -166,8 +208,15 @@ router.delete("/delete-from-cart", async (req, res) => {
       return res.status(404).json({ error: "Cart not found" });
     }
 
-    // Filter out the item to be deleted
-    cart.items = cart.items.filter((item) => item.product.toString() !== productId);
+    // Check if the item to be deleted exists in the cart
+    const cartItemIndex = cart.items.findIndex((item) => item.product.toString() === productId);
+
+    if (cartItemIndex === -1) {
+      return res.status(404).json({ error: "Item not found in cart" });
+    }
+
+    // Remove the item from the cart
+    cart.items.splice(cartItemIndex, 1);
 
     // Calculate the total price
     cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
@@ -215,4 +264,3 @@ router.put("/update-cart-item", async (req, res) => {
 });
 
 module.exports = router;
-
