@@ -115,5 +115,104 @@ router.delete('/order/:orderId', async (req, res) => {
     }
   });
 
-  
+
+const Cart = require("../models/cart.model");
+
+router.post("/add-to-cart", async (req, res) => {
+  try {
+    const { userId, productId, quantity } = req.body;
+
+    // Check if the user's cart exists
+    let cart = await Cart.findOne({ _id: userId });
+
+    if (!cart) {
+      // If cart doesn't exist, create a new cart
+      cart = new Cart({ _id: userId });
+    }
+
+    // Check if the item is already in the cart
+    const existingItem = cart.items.find((item) => item.product.toString() === productId);
+    if (existingItem) {
+      // If the item already exists, update the quantity
+      existingItem.quantity += quantity;
+    } else {
+      // If the item doesn't exist, add it to the cart
+      cart.items.push({ product: productId, quantity });
+    }
+
+    // Calculate the total price
+    cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+
+    // Save the cart
+    await cart.save();
+
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to add item to cart" });
+  }
+});
+
+
+
+
+router.delete("/delete-from-cart", async (req, res) => {
+  try {
+    const { userId, productId } = req.body;
+
+    // Find the user's cart
+    const cart = await Cart.findOne({ _id: userId });
+
+    if (!cart) {
+      return res.status(404).json({ error: "Cart not found" });
+    }
+
+    // Filter out the item to be deleted
+    cart.items = cart.items.filter((item) => item.product.toString() !== productId);
+
+    // Calculate the total price
+    cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+
+    // Save the updated cart
+    await cart.save();
+
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete item from cart" });
+  }
+});
+
+router.put("/update-cart-item", async (req, res) => {
+  try {
+    const { userId, productId, quantity } = req.body;
+
+    // Find the user's cart
+    const cart = await Cart.findOne({ _id: userId });
+
+    if (!cart) {
+      return res.status(404).json({ error: "Cart not found" });
+    }
+
+    // Find the item to be updated
+    const cartItem = cart.items.find((item) => item.product.toString() === productId);
+
+    if (!cartItem) {
+      return res.status(404).json({ error: "Item not found in cart" });
+    }
+
+    // Update the item's quantity
+    cartItem.quantity = quantity;
+
+    // Calculate the total price
+    cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+
+    // Save the updated cart
+    await cart.save();
+
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update cart item" });
+  }
+});
+
 module.exports = router;
+
