@@ -64,8 +64,9 @@ const encpassword =  await bcrypt.hashSync(password, salt);
             const token = jwt.sign({ id: usr._id, role:usr.role }, process.env.tokenSecret);
         //EMAIL.otpSend(req.body.email);
     delete usr._doc.password;
-    const {name, email, phoneNumber, image, _id, isVerified,} = usr._doc;
-            res.status(201).json({ message: "User created.", success: true ,name, email, phoneNumber,image,id: _id, isVerified, token: token});
+    const {name, email, phoneNumber, image, _id} = usr._doc;
+  const  isVerifiedd=usr._doc.isVerified.toString();
+            res.status(201).json({ message: "User created.", success: true ,name, email, phoneNumber,image,id: _id, isVerified:isVerifiedd, token: token});
           })
       .catch((err) => {
         console.log(err);
@@ -117,15 +118,27 @@ try {
       return res.status(400).json({message: "User not verified", success: false});
 
     }
+
+  //   "message": "valid Password.",
+  // "success": true,
+  // "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Y2NkMzUxOTZkMmFiY2JhODQ3NjZkNSIsImlhdCI6MTY5MTQ2NDU0MX0.VGhu7QImE5peRF1v2_pMB2iVZH0eh5yi9Cp2PdH4pcI",
+  // "_id": "64ccd35196d2abcba84766d5",
+  // "email": "ashishpaudel54@gmail.com",
+  // "isVerified": true,
+  // "name": "Ashish Paudel",
+  // "phoneNumber": "9846880362",
+  // "image": "https://res.cloudinary.com/djq37xptm/image/upload/v1677953696/i02sxwh0mn1biz6ivgiu.jpg",
+  // "__v": 0
     bcrypt.compare(userpassword, user.password, function(err, result) {
       if (err) {
         return res.status(400).json({message: "Invalid Password.", success: false});
       }
       if (result) {
         const token = JWT.generateNewToken({ id: user._id, role: user.role});
-        delete user._doc.password;
-
-        return res.status(201).json({message: "valid Password.", success: true, token: token, ...user._doc});
+        //delete user._doc.password;
+        const { _id, name, image, email, phoneNumber } = user._doc;
+        const isVerifiedd =  (user._doc.isVerified).toString();
+        return res.status(201).json({message: "valid Password.", success: true, token: token, _id, name, phoneNumber, email, image, isVerified: isVerifiedd});
       } else {
         return res.status(400).json({message: "Invalid Password.", success: false});
       }
