@@ -163,8 +163,9 @@ router.get("/tokenValid", async (req, res) => {
       if (!user) {
         return res.status(400).json({ msg: false, success: false });
       }
-      const { _id, username, email, password, phoneNumber, isVerified } = user._doc;
-      return res.status(201).json({ msg: true, success: true, _id, username, email, password, phoneNumber, isVerified });
+      const { _id, username, email, password, phoneNumber } = user._doc;
+      const isVerifiedd =  (user._doc.isVerified).toString();
+      return res.status(201).json({ msg: true, success: true, _id, username, email, password, phoneNumber, isVerified:isVerifiedd });
   
     } catch (err) {
       return res.status(500).json({ error: err.message });
@@ -186,7 +187,12 @@ router.post('/verifyUser', async (req, res) => {
     }
   user.isVerified = true;
   await user.save();
-  return res.status(200).json({ message: 'User Verified', success: true });
+  delete user._doc.password;
+  const isVerifiedd =  (user._doc.isVerified).toString();
+  const { _id, name, image, email, phoneNumber } = user._doc;
+  return res.status(201).json({ msg: 'User Verified', success: true, _id, username, email, password, phoneNumber, isVerified:isVerifiedd });
+
+  //return res.status(200).json({ message: 'User Verified', success: true, ...user._doc });
 }
 else if (user.isVerified == true) {
   return res.status(200).json({ message: 'User Already Verified', success: false });
