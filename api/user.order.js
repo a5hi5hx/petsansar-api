@@ -3,6 +3,7 @@ const router = express.Router();
 const Order = require('../models/order.model');
 const Product = require('../models/products');
 const Cart = require("../models/cart.model");
+const { findById } = require('../models/otp.model');
 
 // POST /orders - Place a new order
 router.post('/placeorders', async (req, res) => {
@@ -189,7 +190,6 @@ router.post("/cart/add-to-cart", async (req, res) => {
 
     res.status(200).json(cart);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Failed to add item to cart" });
   }
 });
@@ -197,7 +197,7 @@ router.post("/cart/add-to-cart", async (req, res) => {
 
 
 
-router.delete("/delete-from-cart", async (req, res) => {
+router.delete("/cart/delete-product", async (req, res) => {
   try {
     const { userId, productId } = req.body;
 
@@ -208,59 +208,94 @@ router.delete("/delete-from-cart", async (req, res) => {
       return res.status(404).json({ error: "Cart not found" });
     }
 
-    // Check if the item to be deleted exists in the cart
-    const cartItemIndex = cart.items.findIndex((item) => item.product.toString() === productId);
+    // Find the index of the item to be deleted in the items array
+    const itemIndex = cart.items.findIndex((item) => item.product.toString() === productId);
 
-    if (cartItemIndex === -1) {
-      return res.status(404).json({ error: "Item not found in cart" });
+    if (itemIndex === -1) {
+      return res.status(404).json({ error: "Product not found in cart" });
     }
 
-    // Remove the item from the cart
-    cart.items.splice(cartItemIndex, 1);
+    // Get the quantity and price of the item to be deleted
+    const { quantity, product } = cart.items[itemIndex];
+    const p = await Product.findOne({_id:product});
+    const productPrice = p.price;
 
-    // Calculate the total price
-    cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    // Remove the item from the items array
+    cart.items.splice(itemIndex, 1);
+
+    // Recalculate the total price by deducting the price of the deleted item
+    cart.totalPrice -= quantity * productPrice;
 
     // Save the updated cart
     await cart.save();
 
     res.status(200).json(cart);
   } catch (error) {
-    res.status(500).json({ error: "Failed to delete item from cart" });
+    res.status(500).json({ error});
   }
 });
 
-router.put("/update-cart-item", async (req, res) => {
+router.put("/cart/update-cart-item", async (req, res) => {
   try {
-    const { userId, productId, quantity } = req.body;
+    const { userId, productId, qquantity } = req.body;
 
     // Find the user's cart
     const cart = await Cart.findOne({ _id: userId });
-
+   // console.log(cart);
     if (!cart) {
       return res.status(404).json({ error: "Cart not found" });
     }
 
     // Find the item to be updated
     const cartItem = cart.items.find((item) => item.product.toString() === productId);
+   // console.log('cartItem');
+
+    //console.log(cartItem);
 
     if (!cartItem) {
       return res.status(404).json({ error: "Item not found in cart" });
     }
-
+    const itemIndex = cart.items.findIndex((item) => item.product.toString() === productId);
+//console.log(itemIndex);
+    const { quantity, product } = cart.items[itemIndex];
+    const p = await Product.findOne({product});
+    const productPrice = p.price;
+    
     // Update the item's quantity
-    cartItem.quantity = quantity;
+    const qquat =  quantity + qquantity;
+   // console.log(qquat);
+    cartItem.quantity = qquat;
 
     // Calculate the total price
-    cart.totalPrice = cart.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    const qqqq = cart.totalPrice + qquantity * productPrice;
+   // console.log(qqqq);
 
+    cart.totalPrice =qqqq;
     // Save the updated cart
     await cart.save();
 
     res.status(200).json(cart);
   } catch (error) {
-    res.status(500).json({ error: "Failed to update cart item" });
+    console.log(error);
+    res.status(500).json({ error });
   }
 });
 
+
+router.get("/cart/all/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the user's cart and populate the product information
+    const cart = await Cart.findOne({ _id: id }).populate("items.product");
+
+    if (!cart) {
+      return res.status(404).json({ error: "Cart not found" });
+    }
+
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch cart items" });
+  }
+});
 module.exports = router;
