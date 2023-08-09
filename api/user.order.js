@@ -25,7 +25,7 @@ router.post('/placeorders', async (req, res) => {
     for (const productId of products) {
       const product = await Product.findById(productId);
       if (!product) {
-        return res.status(404).json({ error: 'Invalid product ID' });
+        return res.status(400).json({ error: 'Invalid product ID' });
       }
     }
 
@@ -40,13 +40,13 @@ router.post('/placeorders', async (req, res) => {
     const totalQuantity = quantity.reduce((acc, curr) => acc + curr, 0);
    var deliveryFee = 0;
     if(totalQuantity<=2){
-       deliveryFee = 100;
+       deliveryFee = 300;
     }
     else if (totalQuantity<=6){
-       deliveryFee=200;
+       deliveryFee=500;
     }
     else{
-       deliveryFee=350;
+       deliveryFee=800;
     }
     
 
@@ -69,10 +69,10 @@ router.post('/placeorders', async (req, res) => {
       await Product.findByIdAndUpdate(products[i], { $inc: { quantity: -1 } });
     }
 
-    res.status(200).json(savedOrder);
+    res.status(200).json({savedOrder, message: 'Success'});
   } catch (error) {
     console.error(error);
-    res.status(400).json({ mesasge: 'Failed to place the order' });
+    res.status(400).json({ error: 'Failed to place the order' });
   }
 });
 
