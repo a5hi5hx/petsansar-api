@@ -92,7 +92,17 @@ router.post("/addScroll", upload.single("image"), async (req, res) => {
   });
   
 
-
+  router.get("/viewOrders", async (req, res) => {
+  
+    try {
+      // Find orders by the specified user ID
+      const orders = await Order.find({}).populate("user").populate("products").populate("address");
+      res.status(200).json(orders);
+    } catch (error) {
+     console.log(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
 
 
 module.exports = router;
