@@ -37,7 +37,7 @@ const User = Schema({
   },
   image: {
    type: String,
-   default:"https://res.cloudinary.com/djq37xptm/image/upload/v1677953696/i02sxwh0mn1biz6ivgiu.jpg",
+   default:"https://res.cloudinary.com/ds1swdnv8/image/upload/v1692006700/petsansar/n3ilxxd6nqx9qu9wnqq7.png",
   },
 
 });
