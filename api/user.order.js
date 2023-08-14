@@ -4,7 +4,7 @@ const Order = require('../models/order.model');
 const Product = require('../models/products');
 const Cart = require("../models/cart.model");
 const { findById } = require('../models/otp.model');
-
+const noti = require('../controllers/notification');
 // POST /orders - Place a new order
 router.post('/placeorders', async (req, res) => {
   try {
@@ -14,6 +14,7 @@ router.post('/placeorders', async (req, res) => {
       quantity,
       addressId,
       paymentType,
+      devices,
     } = req.body;
 
     // Validate request data
@@ -68,7 +69,8 @@ router.post('/placeorders', async (req, res) => {
     for (let i = 0; i < products.length; i++) {
       await Product.findByIdAndUpdate(products[i], { $inc: { quantity: -1 } });
     }
-
+const a = noti.SendBuyNotification();
+const ai = sendorderNotification(devices);
     res.status(200).json({savedOrder, message: 'Success'});
   } catch (error) {
     console.error(error);
@@ -298,4 +300,25 @@ router.get("/cart/all/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch cart items" });
   }
 });
+const pushNotificationService = require("../controllers/notificationservice");
+
+function sendorderNotification(devices) {
+  var message = {
+    app_id: appId,
+    contents: { en: "Order Placed successfully" },
+    //included_segments: ["included_palyer_ids"],
+    include_player_ids: [devices],
+    content_available: true,
+    small_icon: "ic_notification_icon",
+    data: {
+      PushTitle: "Pet Sansar",
+    },
+  };
+
+  pushNotificationService.sendNotification(message, (error, results) => {
+    if (error) {
+      return next(error);
+    }
+  });
+}
 module.exports = router;
