@@ -20,10 +20,10 @@ exports.SendBuyNotification = (req, res, next) => {
     if (error) {
       return next(error);
     }
-     res.status(200).send({
-      message: "success",
-      data: results,
-    });
+    //  res.status(200).json({
+    //   message: "success",
+    //   data: results,
+    // });
   });
 };
 
@@ -43,10 +43,10 @@ exports.SendorderPlaceNotification = (req, res, next) => {
     if (error) {
       return next(error);
     }
-    return res.status(200).send({
-      message: "success",
-      data: results,
-    });
+    // return res.status(200).send({
+    //   message: "success",
+    //   data: results,
+    // });
   });
 };
 
@@ -66,9 +66,9 @@ exports.SendCustomNotification = (req, res, next) => {
       if (error) {
         return next(error);
       }
-      return res.status(200).send({
-        message: "success",
-        data: results,
-      });
+      // return res.status(200).send({
+      //   message: "success",
+      //   data: results,
+      // });
     });
   };
