@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+require('dotenv').config();
 const Order = require('../models/order.model');
 const Product = require('../models/products');
 const Cart = require("../models/cart.model");
@@ -304,7 +305,7 @@ const pushNotificationService = require("../controllers/notificationservice");
 
 function sendorderNotification(devices) {
   var message = {
-    app_id: appId,
+    app_id: process.env.one_signal_appID,
     contents: { en: "Order Placed successfully" },
     //included_segments: ["included_palyer_ids"],
     include_player_ids: [devices],
